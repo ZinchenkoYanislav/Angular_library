@@ -1,0 +1,12 @@
+<div *ngIf="author?.books">
+  <div class="card" *ngFor="let book of author?.books" >
+    <p>Название: {{ book.name }}</p>
+    <p>Колличество страниц: {{ book.pages }}cт</p>
+    <p>Жанр: {{ book.genre }}</p>
+    <button class="btn" (click)="deleteBook(book)">Удалить</button>
+    <button class="btn" (click)="editFormBook=!editFormBook">Редактировать</button>
+    <div  *ngIf="editFormBook">
+      <app-book-edit-form [editFormBook]="editFormBook" (updateBook)="updateBook($event)" [genres]="genres" [book]="book"></app-book-edit-form>
+    </div>
+  </div>
+</div>

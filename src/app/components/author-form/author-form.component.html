@@ -1,0 +1,50 @@
+<div class="container">
+  <form class="card" [formGroup]="form" (ngSubmit)="submit()">
+    <div class="form-control">
+      <label for="">Имя</label>
+      <input type="text" formControlName="name" />
+      <div
+        *ngIf="form.get('name').invalid && form.get('name').touched"
+        class="validation"
+      >
+        <small *ngIf="form.get('name').errors.required">
+          Поле Имя не может быть пустым
+        </small>
+      </div>
+    </div>
+
+    <div class="form-control">
+      <label for="">Фамилия</label>
+      <input type="text" formControlName="surname" />
+      <div
+        *ngIf="form.get('surname').invalid && form.get('surname').touched"
+        class="validation"
+      >
+        <small> Поле Фамилия не может быть пустым </small>
+      </div>
+    </div>
+
+    <div class="form-control">
+      <label for="">Отчество</label>
+      <input
+        type="text"
+        placeholder="Необязательно"
+        formControlName="midlename"
+      />
+    </div>
+
+    <div class="form-control">
+      <label for="">Дата рождения</label>
+      <input type="text" formControlName="dateBirth" />
+    </div>
+    <div
+      *ngIf="form.get('name').invalid && form.get('name').touched"
+      class="validation"
+    >
+      <small> Поле Дата рождения не может быть пустым </small>
+    </div>
+    <button class="btn" type="submit" [disabled]="form.invalid">
+      Добавить автора
+    </button>
+  </form>
+</div>

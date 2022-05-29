@@ -1,0 +1,71 @@
+<div class="container">
+  <button class="btn" type="submit" (click)="showFormGenre=!showFormGenre">
+    Добавить Жанр
+  </button> 
+  <form *ngIf="showFormGenre" class="card" [formGroup]="formGenre" (ngSubmit)="submitGenre()">
+    <div class="form-control">
+      <label for="">Название Жанра</label>
+      <input type="text" formControlName="name" />
+      <div
+        *ngIf="formGenre.get('name').invalid && formGenre.get('name').touched"
+        class="validation"
+      >
+        <small *ngIf="formGenre.get('name').errors.required">
+          Поле название Жанра не может быть пустым
+        </small>
+      </div>
+    </div>
+    <button class="btn" type="submit" [disabled]="formGenre.invalid">
+      Добавить Жанр
+    </button>
+  </form>
+
+  <form class="card" [formGroup]="form" (ngSubmit)="submit()">
+    <div class="form-control">
+      <label for="">Название Книги</label>
+      <input type="text" formControlName="name" />
+      <div
+        *ngIf="form.get('name').invalid && form.get('name').touched"
+        class="validation"
+      >
+        <small *ngIf="form.get('name').errors.required">
+          Поле название книги не может быть пустым
+        </small>
+      </div>
+    </div>
+
+    <div class="form-control">
+      <label>Aвтор</label>
+      <select formControlName="author">
+        <option *ngFor="let author of autors" [value]="author.id">
+          {{ author.surname }} {{ author.name[0] }}.{{ author.midlename[0] }}.
+        </option>
+      </select>
+    </div>
+
+    <div class="form-control">
+      <label>Жанр</label>
+      <select formControlName="genre">
+        <option *ngFor="let genre of genres" [value]="genre.name">
+          {{ genre.name }}
+        </option>
+      </select>
+    </div>
+
+    <div class="form-control">
+      <label for="">Колличество страниц</label>
+      <input type="text" formControlName="pages" />
+      <div
+        *ngIf="form.get('pages').invalid && form.get('pages').touched"
+        class="validation"
+      >
+        <small *ngIf="form.get('pages').errors.required">
+          Поле колличество страниц не может быть пустым
+        </small>
+      </div>
+    </div>
+    <button class="btn" type="submit" [disabled]="form.invalid">
+      Добавить книгу
+    </button>
+  </form>
+</div>
