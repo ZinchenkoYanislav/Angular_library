@@ -112,9 +112,9 @@ export class AppComponent implements OnInit {
     if (savedGenres) {
       this.genres = JSON.parse(savedGenres);
     }
-    if(!savedAuthors && !savedGenres){
-      this.updateStorage()
-    }
+    // if(!savedAuthors && !savedGenres){
+    //   this.updateStorage()
+    // }
   }
 
   updateStorage() {
